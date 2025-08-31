@@ -1,0 +1,29 @@
+(function() {
+  // Espera el form de producto (las plantillas suelen usar /cart o /cart/add)
+  function ready(fn){document.readyState!='loading'?fn():document.addEventListener('DOMContentLoaded',fn);}
+  ready(function() {
+    var form = document.querySelector('form[action*="/cart"]') || document.querySelector('form[action*="/cart/add"]');
+    if (!form) return;
+
+    var block = document.createElement('div');
+    block.style.marginTop = "12px";
+    block.innerHTML = '\
+      <label for="nombre_personalizado" style="display:block;margin-bottom:6px;">\
+        Nombre a personalizar\
+      </label>\
+      <input type="text" id="nombre_personalizado" name="attributes[nombre_personalizado]" \
+        placeholder="Ej: Federico" required style="padding:8px;width:100%;max-width:420px;border:1px solid #ddd;">\
+      <small style="display:block;margin-top:4px;">Se imprimirá tal cual lo escribas.</small>\
+    ';
+    form.appendChild(block);
+
+    form.addEventListener('submit', function(e) {
+      var val = (document.getElementById('nombre_personalizado') || {}).value || "";
+      if (!val.trim()) {
+        e.preventDefault();
+        alert("Por favor ingresá un nombre para personalizar.");
+      }
+      // Si querés, limitá longitud/caracteres aquí
+    });
+  });
+})();
