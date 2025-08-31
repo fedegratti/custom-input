@@ -1,0 +1,131 @@
+$small-breakpoint:   400px;
+$medium-breakpoint:  960px;
+$wide-breakpoint:    1366px;
+
+$numbers: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,99];
+
+@mixin respond-to($breakpoint) {
+    @media screen and (min-width: $breakpoint), print {
+        @content;
+    }
+}
+
+@mixin user-select($value) {
+    @each $vendor in ('-webkit-', '-moz-', '-ms-', '-o-', '') {
+        #{$vendor}user-select: #{$value};
+    }
+}
+
+@mixin user-drag($value) {
+    @each $vendor in ('-webkit-', '-moz-', '-ms-', '-o-', '') {
+        #{$vendor}user-drag: #{$value};
+    }
+}
+
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    background-color: #19191b;
+    color: #EDEDED;
+}
+
+.body__container {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    min-height: calc(100% - 110px);
+    flex-direction: column;
+    align-items: center;
+    background-color: #EDEDED;
+    padding-top: 110px;
+
+    @include respond-to($medium-breakpoint) {
+        padding-top: 60px;
+        min-height: calc(100% - 60px);
+    }
+}
+
+div.hidden {
+    display: none;
+}
+
+a {
+    color: #3483fa;
+    text-decoration: none;
+    transition: color .2s ease-in-out;
+    cursor: pointer;
+    user-select: none;
+    line-height: 1;
+
+    &:hover {
+        color: #2968c8;
+    }
+
+    &.danger {
+        color: #d73a49;
+    }
+}
+
+.is-column {
+    flex-direction: column;
+}
+
+.padding-4 {
+    padding: 4px;
+}
+
+.margin-8 {
+    margin-bottom: 8px;
+}
+
+.margin-16 {
+    margin-bottom: 16px;
+}
+
+.margin-20 {
+    margin-bottom: 20px;
+}
+
+.margin-right-14 {
+    margin-right: 14px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+h1 {
+    margin-top: 0;
+}
+
+.self-start {
+    align-self: flex-start;
+    justify-self: flex-start;
+}
+
+.row {
+    display: flex;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    display: none;
+}
+
+div::-webkit-scrollbar {
+    width: 6px;
+    height: 8px;
+}
+
+div::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+div::-webkit-scrollbar-thumb {
+    background-color: #adadad;
+}

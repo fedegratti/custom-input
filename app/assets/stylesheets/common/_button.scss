@@ -1,0 +1,42 @@
+.button {
+    cursor: pointer;
+
+    @include user-select('none');
+    @include user-drag('none');
+
+    img {
+        width: 20px;
+        height: 20px;
+        padding-right: 6px;
+
+        pointer-events: none;
+
+        @include respond-to($medium-breakpoint) {
+            padding-right: 10px;
+        }
+    }
+
+    &.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+
+    &--primary {
+        display: flex;
+        align-items: center;
+        padding: 8px 8px;
+        background-color: black;
+        border-radius: 6px;
+        color: white;
+        transition: background-color .2s ease-in-out;
+        border: none;
+
+        &:hover {
+            color: #ffffff;
+            background-color: #525252;
+        }
+    }
+}
+
+
