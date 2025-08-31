@@ -70,3 +70,4 @@ end
 gem 'html2haml'
 gem "haml-rails"
 gem "dartsass-rails", "~> 0.5.1"
+gem 'dotenv', groups: [:development, :test]
