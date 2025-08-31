@@ -73,3 +73,4 @@ gem "dartsass-rails", "~> 0.5.1"
 gem 'dotenv', groups: [:development, :test]
 gem 'pg'
 gem 'rack-cors'
+gem "faraday"
